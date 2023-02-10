@@ -1,5 +1,10 @@
 # shell script to publish a new version of various Google Cloud Run services where the min-instances is set to 1 so that there are no cold starts
 
+# postgis
+gcloud sql instances patch andrew-postgis \
+--activation-policy=ALWAYS \
+--quiet 
+
 # geoserver 
 gcloud run deploy geoserver \
 --image=europe-west8-docker.pkg.dev/andrewcottam-default/andrew-docker/geoserver \

@@ -1,5 +1,10 @@
 # shell script to publish a new version of various Google Cloud Run services where the min-instances is set to 0 so that there is no billing of idle instances
 
+# postgis
+gcloud sql instances patch andrew-postgis \
+--activation-policy=NEVER \
+--quiet
+
 # geoserver 
 gcloud run deploy geoserver \
 --image=europe-west8-docker.pkg.dev/andrewcottam-default/andrew-docker/geoserver \

@@ -1,8 +1,9 @@
-import subprocess, requests
+import subprocess, requests, os
 
-# Start all the Cloud Run services
-# result = subprocess.run(['sh', 'start_services.sh'], stdout=subprocess.PIPE)
-# result.stdout
+# Start all the Cloud Run services and Cloud SQL
+path = os.path.dirname(os.path.realpath(__file__)) 
+result = subprocess.run(['sh', path + os.sep + 'start_services.sh'], stdout=subprocess.PIPE)
+result.stdout
 
 # Request the Geoserver start page - this will block until Geoserver is ready
 print('Waiting for Geoserver to be up..')
