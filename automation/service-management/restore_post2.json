@@ -1,8 +1,0 @@
-{
-    "restore":{
-       "archiveFile":"/opt/geoserver/data_dir/workspace_database.zip",
-       "options":{
-       }
-    }
- }
- 
