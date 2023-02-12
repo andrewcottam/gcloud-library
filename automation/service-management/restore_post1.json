@@ -1,6 +1,6 @@
 {
     "restore":{
-       "archiveFile":"/workspace.zip",
+       "archiveFile":"/opt/geoserver/data_dir/workspace.zip",
        "options":{
        }
     }

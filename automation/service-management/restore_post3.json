@@ -1,6 +1,6 @@
 {
     "restore":{
-       "archiveFile":"/workspace_database_layers.zip",
+       "archiveFile":"/opt/geoserver/data_dir/workspace_database_layers.zip",
        "options":{
        }
     }
