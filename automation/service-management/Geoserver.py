@@ -6,14 +6,40 @@ GS_HEADERS = {'Content-Type': 'application/json'}
 GS_DATA_DIR = '/opt/geoserver/data_dir'
 
 class GeoserverREST(object):
-    """ Helper functions for working with the Geoserver REST API
+    """ Helper class for working with the Geoserver REST API
     """
     
     def __init__(self, rest_url, user, password):
-        self.rest_url = rest_url
-        self.restore_url = rest_url + '/br/restore/'
-        self.user = user
-        self.password = password
+        """Initialises the class and attempts to connect to the Geoserver REST API endpoint using the passed credentials.
+
+        Args:
+            rest_url (string): The REST API endpoint, e.g. https://geoserver-ny43uciwwa-oc.a.run.app/geoserver/rest
+            user (string): The user name used to authenticate to Geoserver 
+            password (string): The password used to authenticate to Geoserver
+
+        Raises:
+            Exception: Raises and Exception if it fails to connect to Geoserver or the credentials are wrong
+        """
+        print('Connecting to the Geoserver REST API ..')
+        # try and connect to the rest endpoint
+        try:
+            response = requests.get(rest_url, auth=(user, password))
+        except requests.exceptions.ConnectionError as e:
+            raise Exception('Unable to connect to ' + rest_url + '. Please check the url and credentials and try again.')
+        else:
+            # Check that is a valid url
+            if (response.status_code == 200):
+                # Check the user/password
+                if (response.text.find('Geoserver Configuration API') > 0):
+                    print('Connected to Geoserver REST API')
+                    self.rest_url = rest_url
+                    self.restore_url = rest_url + '/br/restore/'
+                    self.user = user
+                    self.password = password
+                else:
+                    raise Exception('Invalid credentials')
+            else:
+                raise Exception('Unable to connect to ' + rest_url + '. Please check the url and credentials and try again.')
 
     def restor_from_backup_file(self, backup_filename, check_url, item_name):
         """Makes a request to the Geoserver REST API to restore an existing backup file from disk.
