@@ -1,4 +1,5 @@
 import subprocess, requests, os
+from Geoserver import GeoserverREST
 
 # Start all the Cloud Run services and Cloud SQL
 path = os.path.dirname(os.path.realpath(__file__)) 
@@ -10,6 +11,7 @@ print('Waiting for Geoserver to be up..')
 requests.get('https://geoserver-ny43uciwwa-oc.a.run.app/geoserver/web/')
 print('Geoserver is up')
 # Restore the database
-print('Restoring the database')
-result = subprocess.run(['sh', path + os.sep + 'restore_1.sh'], stdout=subprocess.PIPE)
-result.stdout
+gs = GeoserverREST('https://geoserver-ny43uciwwa-oc.a.run.app/geoserver/rest', 'admin', 'geoserver')
+gs.restor_from_backup_file('/workspace.zip', '/workspaces/cloud_sql?quietOnNotFound=true', 'workspace')
+gs.restor_from_backup_file('/workspace_database.zip', '/workspaces/cloud_sql/datastores/andrew-postgis.xml', 'workspace and store')
+gs.restor_from_backup_file('/workspace_database_layers.zip', '/layers/gee_spectral_data?quietOnNotFound=true', 'workspace, store and layers')
