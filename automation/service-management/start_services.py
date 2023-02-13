@@ -24,7 +24,7 @@ def main(args):
     wait = args.time * 60
     while wait > 0:
         if (wait % 60 == 0):
-            print(str(int(wait/60)) + ' minutes remaining')
+            print(str(int(wait/60)) + ' minutes remaining until resetting services')
         time.sleep(1)
         wait = wait - 1
 
