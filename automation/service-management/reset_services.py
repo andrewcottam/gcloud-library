@@ -5,4 +5,4 @@ print('\nResetting services ..')
 path = os.path.dirname(os.path.realpath(__file__)) 
 result = subprocess.run(['sh', path + os.sep + 'reset_services.sh'], stdout=subprocess.PIPE)
 result.stdout
-print('Services stopped\n')
+print('Services reset\n')
