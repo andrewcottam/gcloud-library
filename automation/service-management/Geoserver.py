@@ -31,7 +31,7 @@ class GeoserverREST(object):
             if (response.status_code == 200):
                 # Check the user/password
                 if (response.text.find('Geoserver Configuration API') > 0):
-                    print('Connected to Geoserver REST API')
+                    print('Connected to Geoserver REST API\n')
                     self.rest_url = rest_url
                     self.restore_url = rest_url + '/br/restore/'
                     self.user = user

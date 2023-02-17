@@ -8,11 +8,12 @@ def main(args):
     path = os.path.dirname(os.path.realpath(__file__)) 
     result = subprocess.run(['sh', path + os.sep + 'start_services.sh'], stdout=subprocess.PIPE)
     result.stdout
+    print('\nAll services set to min-instances of 1')
 
     # Request the Geoserver start page - this will block until Geoserver is ready
-    print('\nWaiting for Geoserver to be up ..')
+    print('\n\nWaiting for Geoserver to be up ..')
     requests.get('https://geoserver-ny43uciwwa-oc.a.run.app/geoserver/web/')
-    print('Geoserver is up\n')
+    print('Geoserver is up\n\n')
 
     # Restore the Geoserver resources
     gs = GeoserverREST('https://geoserver-ny43uciwwa-oc.a.run.app/geoserver/rest', 'admin', 'geoserver')
