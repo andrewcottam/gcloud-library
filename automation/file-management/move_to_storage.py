@@ -9,5 +9,6 @@ for i in range(1,90):
     with open(filename, "wb") as f:
         f.write(response.content)
     print('Moving to Google Cloud Storage')
-    os.system('gcloud storage cp /Users/andrewcottam/Documents/GitHub/gcloud-library/' + filename + ' gs://andrewcottam-default-flickr-photos/' + filename)
+    os.system('gcloud storage cp ' + filename + ' gs://andrewcottam-default-flickr-photos/' + filename)
+    os.remove(filename)
     break
