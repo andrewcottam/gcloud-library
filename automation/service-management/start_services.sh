@@ -43,3 +43,12 @@ gcloud run deploy pgadmin4 \
 --project=andrewcottam-default \
 --quiet \
  && gcloud run services update-traffic python-rest-server --to-latest --region=europe-west8 --quiet
+
+ # tree-detection-server
+ gcloud run deploy tree-detection-server \
+--image=europe-west8-docker.pkg.dev/andrewcottam-default/andrew-docker/tree-detection-server:latest \
+--min-instances=1 \
+--region=europe-west8 \
+--project=andrewcottam-default \
+--quiet \
+ && gcloud run services update-traffic tree-detection-server --to-latest --region=europe-west8 --quiet
