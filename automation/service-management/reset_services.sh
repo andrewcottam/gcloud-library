@@ -9,6 +9,8 @@ gcloud sql instances patch andrew-postgis \
 gcloud run deploy geoserver \
 --image=europe-west8-docker.pkg.dev/andrewcottam-default/andrew-docker/geoserver \
 --min-instances=0 \
+--cpu=1 \
+--memory=4Gi \
 --set-cloudsql-instances=andrewcottam-default:europe-west8:andrew-postgis \
 --region=europe-west8 \
 --project=andrewcottam-default \
