@@ -27,8 +27,9 @@ def delete_retired_revisions():
                     print(f"Deleted ({write_requests} write requests)")
                     if (write_requests >60):
                         # There is a quota of 60 write operations per minute using the Cloud Run API, so wait 1 minute before continuing
-                        time.sleep(60)
                         print('Pausing to wait for the quota limit per minute to expire..')
+                        time.sleep(60)
+                        write_requests = 0
                 else:
                     print('Revision is currently serving')
 
