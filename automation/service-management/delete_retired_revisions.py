@@ -22,7 +22,7 @@ def delete_retired_revisions():
                     # Initialize request argument(s)
                     request = run_v2.DeleteRevisionRequest(name=revision.name,)
                     # Make the request to delete the revision
-                    operation = client.delete_revision(request=request)
+                    client.delete_revision(request=request)
                     write_requests += 1
                     print(f"Deleted ({write_requests} write requests)")
                     if (write_requests >59):
