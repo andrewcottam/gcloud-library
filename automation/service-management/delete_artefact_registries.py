@@ -5,6 +5,7 @@ def delete_registries():
     # Create a client
     client = artifactregistry_v1.ArtifactRegistryClient()
     # Initialize request argument(s)
+    # TODO: Update these from being hard-coded
     request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/andrewcottam-default/locations/europe-west8/repositories/andrew-docker")
     # Make the request
     page_result = client.list_docker_images(request=request)

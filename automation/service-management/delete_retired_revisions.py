@@ -1,5 +1,5 @@
 # Deletes all retired revisions across all Cloud Run services - install run_v2 with pip install google-cloud-run
-import time
+import time, os
 from google.cloud import run_v2
 from google.cloud.run_v2.types import Condition
 
@@ -7,7 +7,9 @@ def delete_retired_revisions():
     # Create a client
     client = run_v2.RevisionsClient()
     # Initialize request argument(s) to get all revisions
-    request = run_v2.ListRevisionsRequest(parent="projects/162666128137/locations/europe-west8/services/-",)
+    # TODO: Update this to not being hard-coded
+    project_id = os.getenv('GOOGLE_CLOUD_PROJECT') # you can use the project ID or the project number
+    request = run_v2.ListRevisionsRequest(parent="projects/{project_id}/locations/europe-west6/services/-",) # gainforest
     # request = run_v2.ListRevisionsRequest(parent="projects/162666128137/locations/europe-west8/services/tree-detection-server",)
     # Make the request to get the list of revisions
     page_result = client.list_revisions(request=request)
