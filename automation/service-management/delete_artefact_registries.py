@@ -8,7 +8,7 @@ def delete_registries():
     # TODO: Update these from being hard-coded
     request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/andrewcottam-default/locations/europe-west8/repositories/andrew-docker")
     # gainforest
-    request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/tree-mapping/locations/europe-west6/repositories/tree-mapping-default")
+    request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/tree-mapping-93fd7/locations/europe-west6/repositories/tree-mapping-default")
     # Make the request
     page_result = client.list_docker_images(request=request)
     # Iterate through the docker images
