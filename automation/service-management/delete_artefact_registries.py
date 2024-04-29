@@ -19,7 +19,7 @@ def delete_registries():
                 print(f"Docker image: {name} has the tag: {image.tags[0]}")
             else:
                 print(f"Docker image: {name} has no tags - deleting")
-                # Initialize request argument(s)
+                # Initialize request argument(s) - this is no longer working on 16/04/2024
                 request = artifactregistry_v1.DeleteVersionRequest(name=image.name,)
                 # Make the request
                 client.delete_version(request=request)

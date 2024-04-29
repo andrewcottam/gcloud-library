@@ -10,7 +10,7 @@ def delete_retired_revisions():
     # TODO: Update this to not being hard-coded
     project_id = os.getenv('GOOGLE_CLOUD_PROJECT') # you can use the project ID or the project number
     print(f"Project ID: {project_id}")
-    request = run_v2.ListRevisionsRequest(parent="projects/{project_id}/locations/europe-west6/services/-",) # gainforest
+    request = run_v2.ListRevisionsRequest(parent=f"projects/{project_id}/locations/europe-west6/services/-",) # gainforest
     # request = run_v2.ListRevisionsRequest(parent="projects/162666128137/locations/europe-west8/services/tree-detection-server",)
     # Make the request to get the list of revisions
     page_result = client.list_revisions(request=request)
