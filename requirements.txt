@@ -1,0 +1,2 @@
+google-cloud-run==0.7.1
+google-cloud-artifact-registry==1.8.1

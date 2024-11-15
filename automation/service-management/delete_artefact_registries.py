@@ -5,7 +5,10 @@ def delete_registries():
     # Create a client
     client = artifactregistry_v1.ArtifactRegistryClient()
     # Initialize request argument(s)
-    request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/andrewcottam-default/locations/europe-west8/repositories/andrew-docker")
+    # TODO: Update these from being hard-coded
+    # request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/andrewcottam-default/locations/europe-west8/repositories/andrew-docker")
+    # gainforest
+    request = artifactregistry_v1.ListDockerImagesRequest(parent="projects/tree-mapping-93fd7/locations/europe-west6/repositories/tree-mapping-default")
     # Make the request
     page_result = client.list_docker_images(request=request)
     # Iterate through the docker images
@@ -16,7 +19,7 @@ def delete_registries():
                 print(f"Docker image: {name} has the tag: {image.tags[0]}")
             else:
                 print(f"Docker image: {name} has no tags - deleting")
-                # Initialize request argument(s)
+                # Initialize request argument(s) - this is no longer working on 16/04/2024
                 request = artifactregistry_v1.DeleteVersionRequest(name=image.name,)
                 # Make the request
                 client.delete_version(request=request)
